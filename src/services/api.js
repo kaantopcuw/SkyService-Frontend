@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/',
+  baseURL: process.env.VITE_API_TARGET || 'https://skyservice-api.onrender.com',
 });
 
 export const apiService = {
