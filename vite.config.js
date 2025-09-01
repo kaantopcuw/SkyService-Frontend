@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [svelte()],
   server: {
     proxy: {
-      '/api': {
+      '/': {
         target: process.env.VITE_API_TARGET || 'https://skyservice-api.onrender.com',
         changeOrigin: true,
         timeout: 30000,
