@@ -18,9 +18,9 @@
   let cheapest = 0;
 
   const airlineLogos = {
-    'Bahamas Air': '/assets/logo_bahamasair.svg',
-    'Sunrise Air': '/assets/logo-sunrise.svg',
-    'Skyalps': '/assets/Skyalps-Logo.svg'
+    'Bahamas Air': '/logo_bahamasair.svg',
+    'Sunrise Air': '/logo-sunrise.svg',
+    'Skyalps': '/Skyalps-Logo.svg'
   };
 
   const airlineColors = {

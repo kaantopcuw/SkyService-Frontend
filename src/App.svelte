@@ -32,7 +32,7 @@
           class="flex items-center space-x-2 text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors"
           on:click={() => navigate('home')}
         >
-          <img src="/src/assets/plane.png" alt="Plane" class="w-8 h-8" />
+          <img src="/plane.png" alt="Plane" class="w-8 h-8" />
           <span>SkyService</span>
         </button>
         
