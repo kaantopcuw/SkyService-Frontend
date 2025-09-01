@@ -2,12 +2,12 @@ import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [svelte()],
   server: {
     proxy: {
       '/api': {
-        target: 'https://skyservice-api.onrender.com',
+        target: process.env.VITE_API_TARGET || 'https://skyservice-api.onrender.com',
         changeOrigin: true,
         timeout: 30000,
         proxyTimeout: 30000,
@@ -15,4 +15,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))
