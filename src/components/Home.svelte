@@ -45,7 +45,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <h1 class="text-4xl md:text-6xl font-bold mb-4 flex items-center justify-center gap-4">
-        <img src="/src/assets/plane-white.png" alt="Plane" class="w-12 h-12 md:w-16 md:h-16" />
+        <img src="/assets/plane-white.png" alt="Plane" class="w-12 h-12 md:h-16 md:w-16" />
         SkyService
       </h1>
       <p class="text-xl md:text-2xl mb-6 text-blue-100">En uygun uçak biletlerini bulun ve fiyat alarmları oluşturun</p>
