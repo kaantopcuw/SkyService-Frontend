@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-success {
+    @apply bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
+  }
+  
+  .date-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
+    @apply bg-white text-gray-900 font-medium;
+    @apply hover:border-gray-400 cursor-pointer;
+    position: relative;
+  }
+  
+  .date-input::-webkit-calendar-picker-indicator {
+    @apply absolute right-3 top-1/2 transform -translate-y-1/2;
+    @apply w-5 h-5 cursor-pointer;
+    @apply opacity-70 hover:opacity-100 transition-opacity;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'/%3e%3c/svg%3e");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .date-input::-webkit-datetime-edit {
+    @apply w-full cursor-pointer;
+  }
+  
+  .date-input::-webkit-datetime-edit-fields-wrapper {
+    @apply cursor-pointer;
+  }
+  
+  .date-input::-webkit-datetime-edit-text {
+    @apply text-gray-600;
+  }
+  
+  .date-input::-webkit-datetime-edit-month-field,
+  .date-input::-webkit-datetime-edit-day-field,
+  .date-input::-webkit-datetime-edit-year-field {
+    @apply cursor-pointer hover:bg-blue-50 rounded px-1;
+  }
+  
+  .flight-card {
+    @apply bg-white rounded-xl border border-gray-200 hover:shadow-md transition-shadow duration-200 cursor-pointer;
+  }
+  
+  .airline-logo {
+    @apply w-12 h-12 object-contain;
+  }
+}
