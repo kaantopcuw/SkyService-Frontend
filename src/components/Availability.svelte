@@ -20,13 +20,13 @@
   const airlineLogos = {
     'Bahamas Air': '/logo_bahamasair.svg',
     'Sunrise Air': '/logo-sunrise.svg',
-    'Skyalps': '/Skyalps-Logo.svg'
+    'Sky Alps': '/Skyalps-Logo.svg'
   };
 
   const airlineColors = {
     'Bahamas Air': 'bg-blue-50 border-blue-200',
     'Sunrise Air': 'bg-orange-50 border-orange-200',
-    'Skyalps': 'bg-green-50 border-green-200'
+    'Sky Alps': 'bg-green-50 border-green-200'
   };
 
   onMount(async () => {
@@ -126,7 +126,7 @@
       </div>
       <div class="text-right">
         <p class="text-blue-100 text-sm">MIN PRICE</p>
-        <p class="text-2xl font-bold">${cheapest} USD</p>
+        <p class="text-2xl font-bold">{cheapest === 999999999.0 ? "No any seat" : "$" + cheapest + " USD"}</p>
       </div>
     </div>
   </div>
@@ -212,14 +212,14 @@
                     </span>
                   {/if}
                   <div class="text-xs text-gray-500 mb-1">From</div>
-                  <div class="text-2xl font-bold text-gray-900">${flight.minFarePrice}</div>
+                  <div class="text-2xl font-bold text-gray-900">{flight.minFarePrice == 999999999.0 ? "no any seat" : "$" + flight.minFarePrice}</div>
                   <div class="flex items-center justify-end mt-2 space-x-2">
                     <img 
                       src={airlineLogos[flight.provider]} 
                       alt={flight.provider} 
-                      class="w-8 h-8 object-contain"
+                      class="w-8 h-8 object-contain {airlineColors[flight.provider]}"
                     />
-                    <div class="text-xs text-gray-600">{flight.provider}</div>
+                    <div class="text-s text-gray-600">{flight.provider}</div>
                   </div>
                   <div class="text-xs text-gray-500 mt-2">
                     {expandedFlights.has(index) ? '▲ Hide' : '▼ Flight Info'}
