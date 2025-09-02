@@ -8,25 +8,23 @@
   export let navigate;
 
   let userAlarms = [];
-  let loading = false;
+  let loadingAlarm = false;
 
-  onMount(async () => {
-    if ($isLoggedIn) {
-      loadUserAlarms();
-    }
-  });
+  $: if ($isLoggedIn && $user?.id) {
+    loadUserAlarms();
+  }
 
 
   async function loadUserAlarms() {
-    if (loading) return; // Prevent multiple simultaneous requests
+    if (loadingAlarm || !$user?.id) return; // Prevent multiple simultaneous requests and run only if user id exists
     try {
-      loading = true;
+        loadingAlarm = true;
       userAlarms = await apiService.getUserAlarms($user.id);
     } catch (error) {
       console.error('Error loading alarms:', error);
       userAlarms = []; // Ensure empty array on error
     } finally {
-      loading = false;
+        loadingAlarm = false;
     }
   }
 
@@ -70,7 +68,7 @@
   <section class="py-5 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h3 class="text-2xl font-bold text-gray-900 mb-8">Fiyat Alarmlarım</h3>
-      {#if loading}
+      {#if loadingAlarm}
         <div class="flex justify-center">
           <div class="text-center py-8">
             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-3"></div>
@@ -90,7 +88,7 @@
           <h4 class="text-xl font-semibold text-gray-900 mb-3">Henüz Fiyat Alarmınız Yok</h4>
           <p class="text-gray-600 mb-2 max-w-md mx-auto">Favori rotalarınız için fiyat takibi yapın ve en uygun fiyatlarda bildirim alın.</p>
           <p class="text-sm text-gray-500 mb-6">Uçuş arayın ve istediğiniz fiyat seviyesi için alarm kurun!</p>
-        
+
         </div>
       {/if}
     </div>
