@@ -10,7 +10,6 @@
   let loadingDestinations = false;
   let hasLoadedPorts = false;
   let retryCount = 0;
-  let maxRetries = 999; // Sonsuz deneme için yüksek sayı
   let retryInterval;
 
   // Form data
@@ -18,6 +17,7 @@
   let toPort = '';
   let departureDate = '';
   let passengerCount = 1;
+  let isModalOpen = false;
 
   // Get tomorrow's date as default
   let tomorrow = new Date();
@@ -66,11 +66,9 @@
       hasLoadedPorts = false;
       portGroups = await apiService.getPortGroups();
       hasLoadedPorts = true;
-      
-      // Load saved search after ports are loaded
+
       loadSavedSearch();
-      
-      // Başarılı yükleme sonrası retry interval'ı temizle
+
       if (retryInterval) {
         clearInterval(retryInterval);
         retryInterval = null;
@@ -96,7 +94,6 @@
     loadPortGroups();
   });
 
-  // Component destroy edildiğinde interval'ı temizle
   import { onDestroy } from 'svelte';
   
   onDestroy(() => {
@@ -128,9 +125,9 @@
     }
   }
 
-  async function handleSearch() {
+  function handleSearch() {
     if (!fromPort || !toPort || !departureDate) {
-      alert('Lütfen tüm alanları doldurun');
+      isModalOpen = true;
       return;
     }
 
@@ -259,10 +256,25 @@
 <div class="text-center mt-8">
   <button 
     class="btn-primary px-8 py-3 text-lg font-semibold"
-    on:click={handleSearch} 
-    disabled={!fromPort || !toPort || !departureDate}
+    on:click={handleSearch}
   >
     <span class="mr-2">🔍</span>
     Uçuş Ara
   </button>
 </div>
+
+<!-- Validation Modal -->
+{#if isModalOpen}
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full text-center">
+    <h3 class="text-xl font-bold text-gray-800 mb-4">Eksik Bilgi</h3>
+    <p class="text-gray-600 mb-6">Uçuş aramak için lütfen tüm zorunlu alanları (Nereden, Nereye ve Tarih) doldurduğunuzdan emin olun.</p>
+    <button 
+      class="btn-primary px-6 py-2"
+      on:click={() => isModalOpen = false}
+    >
+      Anladım
+    </button>
+  </div>
+</div>
+{/if}
