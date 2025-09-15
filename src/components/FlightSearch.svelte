@@ -238,7 +238,7 @@
       bind:value={departureDate} 
       min={new Date().toISOString().split('T')[0]} 
     />
-    <p class="text-xs text-gray-500 mt-1">Örnek: 16.09.2025</p>
+    <p class="text-xs text-gray-500 mt-1">Örnek: 30.09.2025</p>
   </div>
 
   <!-- Passenger Count -->
